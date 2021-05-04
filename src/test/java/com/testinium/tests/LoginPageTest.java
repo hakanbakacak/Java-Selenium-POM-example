@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import static org.junit.Assert.assertNotEquals;
 
+import java.io.IOException;
+import java.util.Properties;
+
 import com.testinium.pages.LoginPageObject;
 
 public class LoginPageTest {
@@ -44,7 +47,12 @@ public class LoginPageTest {
 
     @Test
     public void loginTest(){
-        loginPageObject.login("username", "password");
+       
+        // String username = System.getProperty("login.data.username");
+        // String password = System.getProperty("login.data.password");
+        String username = "username";
+        String password = "password";
+        loginPageObject.login(username, password);
         String currentURL = driver.getCurrentUrl();
         
         assertNotEquals(currentURL, pageUrl);
